@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza to GO — Смакуй найкраще</title>
+    <title>Pizza to GO — Твоє замовлення</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
 
@@ -35,6 +35,7 @@
             padding: 0 20px;
         }
 
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -51,11 +52,10 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -1px;
+            cursor: pointer;
         }
 
-        .logo span {
-            color: var(--primary);
-        }
+        .logo span { color: var(--primary); }
 
         nav a {
             text-decoration: none;
@@ -66,11 +66,19 @@
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: var(--primary);
+        .cart-trigger {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: 0.3s;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             display: flex;
             align-items: center;
@@ -80,224 +88,186 @@
             background: radial-gradient(circle at 80%, var(--accent-bg) 0%, white 100%);
         }
 
-        .hero-text {
-            flex: 1;
-        }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 64px; line-height: 1.1; margin-bottom: 25px; font-weight: 900; }
+        .hero-text h1 span { color: var(--primary); }
+        .hero-text p { font-size: 18px; color: #555; margin-bottom: 35px; }
 
-        .hero-text h1 {
-            font-size: 64px;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            font-weight: 900;
-        }
-
-        .hero-text h1 span {
-            color: var(--primary);
-        }
-
-        .hero-text p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 35px;
-            max-width: 480px;
-        }
-
-        .btn-main {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(255, 92, 0, 0.3);
-            transition: 0.3s;
-        }
-
-        .hero-img {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            animation: float 5s ease-in-out infinite;
-        }
-
+        .hero-img { flex: 1; animation: float 5s ease-in-out infinite; }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
         }
+        .hero-img img { width: 100%; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12)); }
 
-        .hero-img img {
-            width: 100%;
-            max-width: 550px;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12));
-        }
-
-        /* Menu Section */
-        .menu-section {
-            padding: 80px 0;
-        }
-
-        .menu-section h2 {
-            font-size: 38px;
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        .pizza-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
+        /* Pizza Grid */
+        .menu-section { padding: 80px 0; }
+        .pizza-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
 
         .pizza-card {
             background: white;
             border-radius: 35px;
             padding: 25px;
             text-align: center;
-            transition: 0.4s;
             border: 1px solid var(--gray);
-            display: flex;
-            flex-direction: column;
+            transition: 0.4s;
         }
 
-        .pizza-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
-            border-color: var(--primary);
-        }
+        .pizza-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); border-color: var(--primary); }
 
-        .pizza-card .img-container {
-            width: 100%;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
+        .img-container { height: 200px; margin-bottom: 20px; overflow: hidden; border-radius: 20px; }
+        .img-container img { max-height: 100%; transition: 0.5s; }
 
-        .pizza-card img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 20px; /* Додав закруглення для фото з фоном */
-            transition: 0.5s;
-        }
-
-        .pizza-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .pizza-card h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .pizza-card p {
-            font-size: 15px;
-            color: #777;
-            margin-bottom: 25px;
-            min-height: 45px;
-        }
-
-        .card-price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: 900;
-        }
+        .card-price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .price { font-size: 24px; font-weight: 900; }
 
         .add-to-cart {
             background: var(--dark);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 18px;
             cursor: pointer;
             font-size: 24px;
             transition: 0.3s;
         }
 
-        .add-to-cart:hover {
-            background: var(--primary);
-            transform: rotate(90deg);
+        .add-to-cart:hover { background: var(--primary); transform: scale(1.1); }
+
+        /* КОШИК (SIDEBAR) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px; /* Сховано за екраном */
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -10px 0 50px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 40px 30px;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Mobile */
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 0;
-            }
-            .hero-text h1 { font-size: 38px; }
-            nav { display: none; }
+        .cart-sidebar.active { right: 0; }
+
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .close-cart { background: none; border: none; font-size: 30px; cursor: pointer; }
+
+        .cart-items { flex: 1; overflow-y: auto; }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray);
         }
+
+        .cart-item img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
+        .item-info h4 { font-size: 16px; margin-bottom: 5px; }
+        .item-info span { font-weight: 900; color: var(--primary); }
+
+        .cart-footer { padding-top: 20px; }
+        .total-row { display: flex; justify-content: space-between; font-size: 22px; font-weight: 900; margin-bottom: 25px; }
+
+        .order-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover { background: #e65300; }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: none;
+            z-index: 999;
+        }
+        .overlay.active { display: block; }
     </style>
 </head>
 <body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Твій кошик</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            </div>
+
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Разом:</span>
+                <span id="totalSum">0 ₴</span>
+            </div>
+            <button class="order-btn">Замовити</button>
+        </div>
+    </div>
 
     <div class="container">
         <header>
             <div class="logo">Pizza<span>to</span>GO</div>
             <nav>
                 <a href="#menu">Меню</a>
-                <a href="#">Про нас</a>
-                <a href="#">Доставка</a>
-                <a href="#">Кошик</a>
+                <button class="cart-trigger" id="openCart">Кошик (<span id="cartCount">0</span>)</button>
             </nav>
         </header>
 
         <section class="hero">
             <div class="hero-text">
                 <h1>Гаряча піца — <br><span>твій ідеальний вибір</span></h1>
-                <p>Ми використовуємо тільки свіжі інгредієнти та традиційну італійську рецептуру. Спробуй насолоду на смак!</p>
-                <a href="#menu" class="btn-main">Замовити зараз</a>
+                <p>Смакуй найкращі рецепти прямо зараз!</p>
+                <a href="#menu" class="btn-main" style="text-decoration: none; background: var(--primary); color: white; padding: 20px 40px; border-radius: 40px; font-weight: 700;">Обрати піцу</a>
             </div>
             <div class="hero-img">
-                <img src="https://github.com/bychay/pizatogo/blob/main/%D0%A6%D1%96%D0%BB%D0%B0.png?raw=true" alt="Pizza to GO">
+                <img src="https://github.com/bychay/pizatogo/blob/main/%D0%A6%D1%96%D0%BB%D0%B0.png?raw=true" alt="Ціла піца">
             </div>
         </section>
 
         <section class="menu-section" id="menu">
-            <h2>Наші популярні смаки</h2>
             <div class="pizza-grid">
                 
-                <div class="pizza-card">
-                    <div class="img-container">
-                        <img src="https://github.com/bychay/pizatogo/blob/main/%D0%91%D0%B0%D0%B2%D0%B0%D1%80%D1%81%D1%8C%D0%BA%D0%B0.jpg?raw=true" alt="Баварська піца">
-                    </div>
+                <div class="pizza-card" data-name="Баварська" data-price="285" data-img="https://github.com/bychay/pizatogo/blob/main/%D0%91%D0%B0%D0%B2%D0%B0%D1%80%D1%81%D1%8C%D0%BA%D0%B0.jpg?raw=true">
+                    <div class="img-container"><img src="https://github.com/bychay/pizatogo/blob/main/%D0%91%D0%B0%D0%B2%D0%B0%D1%80%D1%81%D1%8C%D0%BA%D0%B0.jpg?raw=true"></div>
                     <h3>Баварська</h3>
-                    <p>Мисливські ковбаски, мариновані огірочки та фірмовий соус</p>
+                    <p>Мисливські ковбаски та огірочки</p>
                     <div class="card-price-row">
                         <span class="price">285 ₴</span>
                         <button class="add-to-cart">+</button>
                     </div>
                 </div>
 
-                <div class="pizza-card">
-                    <div class="img-container">
-                        <img src="https://github.com/bychay/pizatogo/blob/main/%D0%A7%D0%BE%D1%82%D0%B8%D1%80%D0%B8%20%D1%81%D0%B8%D1%80%D0%B0.jpg?raw=true" alt="Чотири сири">
-                    </div>
+                <div class="pizza-card" data-name="Чотири сири" data-price="310" data-img="https://github.com/bychay/pizatogo/blob/main/%D0%A7%D0%BE%D1%82%D0%B8%D1%80%D0%B8%20%D1%81%D0%B8%D1%80%D0%B0.jpg?raw=true">
+                    <div class="img-container"><img src="https://github.com/bychay/pizatogo/blob/main/%D0%A7%D0%BE%D1%82%D0%B8%D1%80%D0%B8%20%D1%81%D0%B8%D1%80%D0%B0.jpg?raw=true"></div>
                     <h3>Чотири сири</h3>
-                    <p>Класичне поєднання моцарели, пармезану, дор-блю та чеддеру</p>
+                    <p>Квартет найкращих сирів</p>
                     <div class="card-price-row">
                         <span class="price">310 ₴</span>
                         <button class="add-to-cart">+</button>
                     </div>
                 </div>
 
-                <div class="pizza-card">
-                    <div class="img-container">
-                        <img src="https://github.com/bychay/pizatogo/blob/main/%D0%9C%D0%B8%D1%81%D0%BB%D0%B8%D0%B2%D1%81%D1%8C%D0%BA%D0%B0.jpg?raw=true" alt="Мисливська піца">
-                    </div>
+                <div class="pizza-card" data-name="Мисливська" data-price="295" data-img="https://github.com/bychay/pizatogo/blob/main/%D0%9C%D0%B8%D1%81%D0%BB%D0%B8%D0%B2%D1%81%D1%8C%D0%BA%D0%B0.jpg?raw=true">
+                    <div class="img-container"><img src="https://github.com/bychay/pizatogo/blob/main/%D0%9C%D0%B8%D1%81%D0%BB%D0%B8%D0%B2%D1%81%D1%8C%D0%BA%D0%B0.jpg?raw=true"></div>
                     <h3>Мисливська</h3>
-                    <p>Соковите м'ясо, папероні та багато сиру з овочами</p>
+                    <p>Ситна м'ясна піца</p>
                     <div class="card-price-row">
                         <span class="price">295 ₴</span>
                         <button class="add-to-cart">+</button>
@@ -308,5 +278,70 @@
         </section>
     </div>
 
+    <script>
+        const cart = [];
+        const cartSidebar = document.getElementById('cartSidebar');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const totalSumElement = document.getElementById('totalSum');
+        const cartCountElement = document.getElementById('cartCount');
+
+        // Відкрити/Закрити кошик
+        document.getElementById('openCart').onclick = () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        };
+
+        document.getElementById('closeCart').onclick = () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        };
+
+        overlay.onclick = () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        };
+
+        // Додавання в кошик
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.onclick = (e) => {
+                const card = e.target.closest('.pizza-card');
+                const pizza = {
+                    name: card.dataset.name,
+                    price: parseInt(card.dataset.price),
+                    img: card.dataset.img
+                };
+                
+                cart.push(pizza);
+                updateCartUI();
+                
+                // Ефект на кнопці
+                button.innerHTML = '✓';
+                setTimeout(() => button.innerHTML = '+', 1000);
+            };
+        });
+
+        function updateCartUI() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                const itemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="item-info">
+                            <h4>${item.name}</h4>
+                            <span>${item.price} ₴</span>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.innerHTML += itemHTML;
+            });
+
+            totalSumElement.innerText = `${total} ₴`;
+            cartCountElement.innerText = cart.length;
+        }
+    </script>
 </body>
 </html>
